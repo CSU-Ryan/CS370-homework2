@@ -3,7 +3,7 @@
 int main(const int divisor, const int dividend) {
     printf("Checker process [%d]: Starting.\n", getpid());
 
-    bool divides = dividend % divisor == 0);
+    int divides = (dividend % divisor == 0);
 
     printf("Checker process [%d]: %d *%S* divisible by %d.\n",
         getpid(),
