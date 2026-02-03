@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int check(const int divisor, const int dividend) {
+int main(const int divisor, const int dividend) {
     printf("Checker process [%d]: Starting.\n", getpid());
 
     bool divides = dividend % divisor == 0);

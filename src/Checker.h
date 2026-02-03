@@ -1,1 +1,0 @@
-extern int dividend(int divisor, int dividend);

@@ -1,11 +1,12 @@
 CC := gcc
-FILES := src/Checker.c src/Coordinator.c
-OUT_EXE := hw2.o
+SRC_PATH := ./src
+BIN_PATH := ./bin
 
 all: build
 
-build: $(FILES)
-	$(CC) -o $(OUT_EXE) $(FILES)
+build:
+	$(CC) -o $(BIN_PATH)/checker.o $(SRC_PATH)/Checker.c
+	$(CC) -o $(BIN_PATH)/coordinator.o $(SRC_PATH)/Coordinator.c
 
 clean:
-	rm -f *.o $(OUT_EXE)
+	rm -r $(BIN_PATH)
