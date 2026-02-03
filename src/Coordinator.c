@@ -23,12 +23,13 @@ int main(const int dividend,
             int status;
             wait(&status);
 
-            printf("Coordinator: child process %d returned %d.",
-                pid, WEXITSTATUS(status));
+            printf("Coordinator: child process %d returned %d.\n",
+                pid, WEXITSTATUS(status)
+                );
         }
         else {
             // Failed to fork
-            printf("Coordinator: could not fork child process.");
+            printf("Coordinator: could not fork child process.\n");
             return 1;
         }
     }
