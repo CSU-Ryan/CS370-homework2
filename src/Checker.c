@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 int main(const int divisor, const int dividend) {
     printf("Checker process [%d]: Starting.\n", getpid());
