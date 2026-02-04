@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
-            execlp("./bin/checker.o", "./bin/checker.o", divisor, dividend);
+            execlp("./checker.o", "./checker.o", divisor, dividend);
         }
         else if (pid > 0) {
             printf("Coordinator: forked process with ID %d.\n", pid);
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
 
             // Code for the Parent
             int status;
-            wait(&status);
+            waitpid(pid, &status, 0);
 
             printf("Coordinator: child process %d returned %d.\n",
                 pid, WEXITSTATUS(status)
