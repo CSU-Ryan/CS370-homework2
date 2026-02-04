@@ -21,6 +21,9 @@ int main(int argc, char **argv) {
             execlp("/bin/checker.o", "/bin/checker.o", divisor, dividend);
         }
         else if (pid > 0) {
+            printf("Coordinator: forked process with ID %d.\n", pid);
+            printf("Coordinator: waiting for process [%d].\n", pid);
+
             // Code for the Parent
             int status;
             wait(&status);
