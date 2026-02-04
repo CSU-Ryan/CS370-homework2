@@ -4,14 +4,13 @@
 #include <sys/wait.h>
 
 int main(int argc, char **argv) {
-    if (argc != 5) {
-        printf("Coordinator: invalid number of arguments (%d =/= 5).\n", argc);
-        printf("DEBUG: %s\n", argv[0]);
+    if (argc != 6) {
+        printf("Coordinator: invalid number of arguments (%d =/= 6).\n", argc);
         return 1;
     }
 
-    const int dividend = atoi(argv[0]);
-    const int divisors[4] = {atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4])};
+    const int dividend = atoi(argv[1]);
+    const int divisors[4] = {atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5])};
 
     for (int i = 0; i < 4; i++) {
         const int divisor = divisors[i];

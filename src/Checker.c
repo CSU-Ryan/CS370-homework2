@@ -3,14 +3,13 @@
 #include <unistd.h>
 
 int main(const int argc, char **argv) {
-    if (argc != 2) {
+    if (argc != 3) {
         printf("Checker process [%d]: Invalid number of arguments (%d =/= 2).\n", getpid(), argc);
-        printf("DEBUG: %s\n", argv[0]);
         return 1;
     }
 
-    const int divisor = atoi(argv[0]);
-    const int dividend = atoi(argv[1]);
+    const int divisor = atoi(argv[1]);
+    const int dividend = atoi(argv[2]);
 
     printf("Checker process [%d]: Starting.\n", getpid());
 
