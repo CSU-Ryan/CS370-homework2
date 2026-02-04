@@ -2,13 +2,14 @@
 #include <stdio.h>
 #include <sys/wait.h>
 
-int main(const int dividend,
-    const int divisor1,
-    const int divisor2,
-    const int divisor3,
-    const int divisor4)
-{
-    const int[4] divisors = {divisor1, divisor2, divisor3, divisor4};
+int main(int argc, char **argv) {
+    if (argc != 5) {
+        printf("Coordinator: invalid number of arguments.\n");
+        return 1;
+    }
+
+    const int dividend = atoi(argv[0]);
+    const int[4] divisors = {atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4])};
 
     for (int i = 0; i < 4; i++) {
         const int divisor = divisors[i];
