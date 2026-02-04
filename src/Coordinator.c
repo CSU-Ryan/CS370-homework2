@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     }
 
     const int dividend = atoi(argv[0]);
-    const int[4] divisors = {atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4])};
+    const int divisors[4] = {atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4])};
 
     for (int i = 0; i < 4; i++) {
         const int divisor = divisors[i];
