@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 
@@ -17,7 +18,7 @@ int main(const int argc, char **argv) {
     printf("Checker process [%d]: %d *%S* divisible by %d.\n",
         getpid(),
         dividend,
-        (divides) ? "IS" : "IS NOT",
+        ((divides) ? "IS" : "IS NOT"),
         divisor;
         );
     printf("Checker process [%d]: Returning %d.\n", getpid(), divides);
