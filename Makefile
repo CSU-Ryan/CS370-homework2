@@ -12,4 +12,4 @@ build:
 	$(CC) -o $(BIN_PATH)/coordinator.o $(SRC_PATH)/Coordinator.c
 
 clean:
-	rm -r $(BIN_PATH)
+	rm -r $(BIN_PATH)/*
