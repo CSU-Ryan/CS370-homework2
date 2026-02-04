@@ -15,12 +15,20 @@ int main(const int argc, char **argv) {
 
     int divides = (dividend % divisor == 0);
 
-    printf("Checker process [%d]: %d *%S* divisible by %d.\n",
+    if (divides) {
+        printf("Checker process [%d]: %d *IS* divisible by %d.\n",
         getpid(),
         dividend,
-        (divides) ? "IS" : "IS NOT",
         divisor
         );
+    } else {
+        printf("Checker process [%d]: %d *IS NOT* divisible by %d.\n",
+        getpid(),
+        dividend,
+        divisor
+        );
+    }
+
     printf("Checker process [%d]: Returning %d.\n", getpid(), divides);
 
     return divides;
