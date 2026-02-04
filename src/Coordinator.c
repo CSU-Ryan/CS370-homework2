@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
 
             // Code for the Parent
             int status;
-            wait(&status);
+            waitpid(pid, &status, 0);
 
             printf("Coordinator: child process %d returned %d.\n",
                 pid, WEXITSTATUS(status)
