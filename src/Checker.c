@@ -4,7 +4,7 @@
 
 int main(const int argc, char **argv) {
     if (argc != 2) {
-        printf("Checker process [%d]: Invalid number of arguments.\n", getpid());
+        printf("Checker process [%d]: Invalid number of arguments (%d =/= 2).\n", getpid(), argc);
         return 1;
     }
 

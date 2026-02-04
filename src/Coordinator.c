@@ -5,7 +5,7 @@
 
 int main(int argc, char **argv) {
     if (argc != 5) {
-        printf("Coordinator: invalid number of arguments.\n");
+        printf("Coordinator: invalid number of arguments (%d =/= 5).\n", argc);
         return 1;
     }
 
