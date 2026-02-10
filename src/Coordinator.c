@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
         if (pid == 0) {
             // Code for the Child
             printf("Coordinator [%d]: I'm the child!\n", getpid());
-            execlp("./checker.o", "./checker.o", divisor, dividend);
+            exec("./checker.o", "./checker.o", divisor, dividend);
         }
         else if (pid > 0) {
             // Code for the Parent
