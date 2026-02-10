@@ -18,19 +18,19 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
-            printf("Coordinater [%d]: I'm the child!\n", getpid());
+            printf("Coordinator [%d]: I'm the child!\n", getpid());
             execlp("./checker.o", "./checker.o", divisor, dividend);
         }
         else if (pid > 0) {
-            printf("Coordinator: forked process with ID %d.\n", pid);
-            printf("Coordinator: waiting for process [%d].\n", pid);
-
             // Code for the Parent
+            printf("Coordinator [%d]: forked process with ID %d.\n", getpid(), pid);
+            printf("Coordinator [%d]: waiting for process [%d].\n", getpid(), pid);
+
             int status;
             waitpid(pid, &status, 0);
 
-            printf("Coordinator: child process %d returned %d.\n",
-                pid, WEXITSTATUS(status)
+            printf("Coordinator [%d]: child process %d returned %d.\n",
+                getpid(), pid, WEXITSTATUS(status)
                 );
         }
         else {
