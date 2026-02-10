@@ -9,6 +9,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+    printf("Coordinator [%d]: starting process '%s'\n", getpid(), argv[0]);
+
     const int dividend = atoi(argv[1]);
     const int divisors[4] = {atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5])};
 
