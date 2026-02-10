@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
-            execlp("bin/checker.o", "bin/checker.o", divisor, dividend);
+            execlp("bin/checker.o", "bin/checker.o", divisor, dividend, (char *)NULL);
 
             printf("Coordinator: failed to execute checker.\n");
             return 1;
