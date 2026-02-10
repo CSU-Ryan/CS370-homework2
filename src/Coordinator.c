@@ -19,6 +19,9 @@ int main(int argc, char **argv) {
         if (pid == 0) {
             // Code for the Child
             execlp("bin/checker.o", "bin/checker.o", divisor, dividend);
+
+            printf("Coordinator: failed to execute checker.\n");
+            return 1;
         }
         else if (pid > 0) {
             // Code for the Parent
