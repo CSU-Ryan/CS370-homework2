@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+/**
+ * Makes current process run Checker code
+ */
 void executeChecker(const int divisor, const int dividend) {
     char divisorString[16];
     sprintf(divisorString, "%d", divisor);
@@ -14,6 +17,9 @@ void executeChecker(const int divisor, const int dividend) {
         (char *)NULL);
 }
 
+/**
+ * Awaits the return value of the Checker child
+ */
 void receiveCheck(const int childpid) {
     printf("Coordinator: forked process with ID %d.\n", childpid);
     printf("Coordinator: waiting for process [%d].\n", childpid);
@@ -26,6 +32,10 @@ void receiveCheck(const int childpid) {
         );
 }
 
+/**
+ * Expects 5 integer arguments: dividend, divisor1, ..., divisor4
+ * Runs a Checker process for each divisor, checking whether the divisor divides the dividend.
+ */
 int main(int argc, char **argv) {
     if (argc != 6) {
         printf("Coordinator: invalid number of arguments (%d =/= 6).\n", argc);
@@ -35,6 +45,7 @@ int main(int argc, char **argv) {
     const int dividend = atoi(argv[1]);
     const int divisors[4] = {atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5])};
 
+    // Loops over divisors
     for (int i = 0; i < 4; i++) {
         const int divisor = divisors[i];
 
