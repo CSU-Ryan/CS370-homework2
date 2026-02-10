@@ -18,6 +18,7 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
+            printf("Coordinater [%d]: I'm the child!\n", getpid())
             execlp("./checker.o", "./checker.o", divisor, dividend);
         }
         else if (pid > 0) {
