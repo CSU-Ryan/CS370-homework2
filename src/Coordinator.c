@@ -18,8 +18,13 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
+            char divisorString[16];
+            sprintf(divisorString, "%d", divisor);
+            char dividendString[16];
+            sprintf(dividendString, "%d", dividend);
+
             execlp("bin/checker.o",
-                "bin/checker.o", itoa(divisor), itoa(dividend),
+                "bin/checker.o", divisorString, dividendString,
                 (char *)NULL);
 
             printf("Coordinator: failed to execute checker.\n");
