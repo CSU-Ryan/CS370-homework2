@@ -3,6 +3,29 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+void executeChecker(const int divisor, const int dividend) {
+    char divisorString[16];
+    sprintf(divisorString, "%d", divisor);
+    char dividendString[16];
+    sprintf(dividendString, "%d", dividend);
+
+    execlp("bin/checker.o",
+        "bin/checker.o", divisorString, dividendString,
+        (char *)NULL);
+}
+
+void receiveCheck(const int childpid) {
+    printf("Coordinator: forked process with ID %d.\n", childpid);
+    printf("Coordinator: waiting for process [%d].\n", childpid);
+
+    int status;
+    waitpid(childpid, &status, 0);
+
+    printf("Coordinator: child process %d returned %d.\n",
+        childpid, WEXITSTATUS(status)
+        );
+}
+
 int main(int argc, char **argv) {
     if (argc != 6) {
         printf("Coordinator: invalid number of arguments (%d =/= 6).\n", argc);
@@ -18,29 +41,14 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
-            char divisorString[16];
-            sprintf(divisorString, "%d", divisor);
-            char dividendString[16];
-            sprintf(dividendString, "%d", dividend);
-
-            execlp("bin/checker.o",
-                "bin/checker.o", divisorString, dividendString,
-                (char *)NULL);
+            executeChecker(divisor, dividend);
 
             printf("Coordinator: failed to execute checker.\n");
             return 1;
         }
         else if (pid > 0) {
             // Code for the Parent
-            printf("Coordinator: forked process with ID %d.\n", pid);
-            printf("Coordinator: waiting for process [%d].\n", pid);
-
-            int status;
-            waitpid(pid, &status, 0);
-
-            printf("Coordinator: child process %d returned %d.\n",
-                pid, WEXITSTATUS(status)
-                );
+            receiveCheck(pid);
         }
         else {
             // Failed to fork
