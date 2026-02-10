@@ -9,8 +9,6 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    printf("Coordinator [%d]: starting process '%s'\n", getpid(), argv[0]);
-
     const int dividend = atoi(argv[1]);
     const int divisors[4] = {atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5])};
 
@@ -20,19 +18,18 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
-            printf("Coordinator [%d]: I'm the child!\n", getpid());
             execlp("./checker.o", "./checker.o", divisor, dividend);
         }
         else if (pid > 0) {
             // Code for the Parent
-            printf("Coordinator [%d]: forked process with ID %d.\n", getpid(), pid);
-            printf("Coordinator [%d]: waiting for process [%d].\n", getpid(), pid);
+            printf("Coordinator: forked process with ID %d.\n", pid);
+            printf("Coordinator: waiting for process [%d].\n", pid);
 
             int status;
             waitpid(pid, &status, 0);
 
-            printf("Coordinator [%d]: child process %d returned %d.\n",
-                getpid(), pid, WEXITSTATUS(status)
+            printf("Coordinator: child process %d returned %d.\n",
+                pid, WEXITSTATUS(status)
                 );
         }
         else {
