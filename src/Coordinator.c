@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
         const auto pid = fork();
         if (pid == 0) {
             // Code for the Child
-            execlp("./checker.o", "./checker.o", divisor, dividend);
+            execlp("bin/checker.o", "bin/checker.o", divisor, dividend);
         }
         else if (pid > 0) {
             // Code for the Parent
