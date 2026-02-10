@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < 4; i++) {
         const int divisor = divisors[i];
 
-        const auto pid = fork();
+        const int pid = fork();
         if (pid == 0) {
             // Code for the Child
             executeChecker(divisor, dividend);
